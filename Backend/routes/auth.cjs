@@ -3,7 +3,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const cookieParser = require("cookie-parser");
 const router = express.Router();
-require("../db/conn.cjs");
+require("../server/db/conn.cjs");
 const User = require("../model/userSchema.cjs");
 
 // Use cookie-parser middleware
