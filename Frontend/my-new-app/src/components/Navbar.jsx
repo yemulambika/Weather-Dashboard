@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import Logo from "../images/logo.png";
+//import Logo from "../images/logo.png";
 import "../App.css";
 
 const Navbar = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import phone from '../images/phone.png'; 
 import email from '../images/email.png'
 import github from '../images/github.png'
-import location from '../images/location.jpg'
+//import location from '../images/location.jpg'
 import "../App.css"
 import 'bootstrap/dist/css/bootstrap.css'
 
