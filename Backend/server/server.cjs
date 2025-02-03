@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-
 const app = express();
 const PORT = 5000;
 
@@ -46,7 +45,12 @@ const COORDINATES = [
   { latitude: 23.560601, longitude: 68.654017 },
 ];
 
-const DOWNLOADS_DIR = path.join(os.homedir(), 'Downloads');
+// Set the Downloads directory inside the server folder
+const DOWNLOADS_DIR = path.join(__dirname, 'Downloads');
+if (!fs.existsSync(DOWNLOADS_DIR)) {
+  fs.mkdirSync(DOWNLOADS_DIR, { recursive: true });
+}
+
 let weatherFilePath = generateFileName();
 let lastFileCreationTime = new Date(0);
 
@@ -57,18 +61,6 @@ function generateFileName() {
   return path.join(DOWNLOADS_DIR, `weather_data_${dateStr}.xlsx`);
 }
 
-const axiosInstance = axios.create({   
-  proxy: {     
-    host: '10.102.0.151', // Replace with your proxy host
-    port: 8080,             
-    // // Replace with your proxy port
-    auth: {       
-      username: 'ambika.intern', // Replace with your proxy username
-      password: 'Nks@#1999aqz', // Replace with your proxy password 
-    }, 
-  }, 
-  }
-); 
 async function fetchLocationWeatherData({ latitude, longitude }) {
   try {
     const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
@@ -89,7 +81,6 @@ async function fetchLocationWeatherData({ latitude, longitude }) {
     };
   } catch (error) {
     console.log(error);
-    // console.error(`Error fetching weather data for (${latitude}, ${longitude}):, error.response?.data || error.message`);
     return null;
   }
 }
@@ -144,129 +135,9 @@ async function fetchWeatherData() {
   console.log('Weather data appended to Excel file:', weatherFilePath);
 }
 
-
-// Routes
-app.get('/weather-log', async (req, res) => {
-  const { coordinates } = req.query;
-  if (!coordinates) return res.status(400).json({ error: 'Coordinates are required.' });
-
-  const [latitude, longitude] = coordinates.split(',').map(Number);
-  if (isNaN(latitude) || isNaN(longitude)) {
-    return res.status(400).json({ error: 'Invalid coordinates format. Use latitude,longitude.' });
-  }
-
-  try {
-    const data = await fetchLocationWeatherData({ latitude, longitude });
-    if (!data) return res.status(500).json({ error: 'Failed to fetch weather data.' });
-
-    res.json([data]);
-  } catch (err) {
-    console.error('Error fetching weather data:', err.message);
-    res.status(500).json({ error: 'Internal server error.' });
-  }
-});
-
-const User = mongoose.model("User", new mongoose.Schema({
-  name: String,
-  email: String,
-  phone: String,
-  work: String,
-  password: String,
-  cpassword: String,
-}));
-
-app.post("/register", async (req, res) => {
-  const { name, email, phone, work, password, cpassword } = req.body;
-
-  if (!name || !email || !phone || !work || !password || !cpassword) {
-      return res.status(422).json({ error: "Please fill all the fields" });
-  }
-
-  if (password !== cpassword) {
-      return res.status(422).json({ error: "Passwords do not match" });
-  }
-
-  try {
-      const existingUser = await User.findOne({ email });
-      if (existingUser) {
-          return res.status(422).json({ error: "User already exists" });
-      }
-
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      const user = new User({
-          name,
-          email,
-          phone,
-          work,
-          password: hashedPassword, // Only hash password, not cpassword
-      });
-
-      await user.save();
-
-      res.status(201).json({ message: "User registered successfully" });
-  } catch (err) {
-      console.error("Error saving user:", err);
-      res.status(500).json({ error: "Failed to register user" });
-  }
-});
-
-app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
-
-  if (!email || !password) {
-      return res.status(400).json({ error: 'Please fill all the fields' });
-  }
-
-  try {
-      const user = await User.findOne({ email });
-      if (!user) {
-          return res.status(404).json({ error: 'User not found' });
-      }
-
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) {
-          return res.status(401).json({ error: 'Invalid credentials' });
-      }
-
-      res.status(200).json({ message: 'Login successful', user });
-  } catch (err) {
-      console.error('Error during login:', err);
-      res.status(500).json({ error: 'Internal server error' });
-  }
-});
-app.post('/api/reset-password', async (req, res) => {
-  const { email, newPassword, confirmPassword } = req.body;
- 
-  if (!email || !newPassword || !confirmPassword) {
-    return res.status(400).json({ message: "Please provide email, new password, and confirm password" });
-  }
- 
-  if (newPassword !== confirmPassword) {
-    return res.status(400).json({ message: "Passwords do not match" });
-  }
- 
-  try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
- 
-    // Hash the new password
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    user.password = hashedPassword;
- 
-    await user.save();
-    res.status(200).json({ message: "Password successfully updated" });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
 // Start Server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   fetchWeatherData();
-  setInterval(fetchWeatherData, 2 * 60 * 1000); 
+  setInterval(fetchWeatherData, 2 * 60 * 1000);
 });
