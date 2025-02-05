@@ -1,0 +1,311 @@
+/* Container for the page */
+.temperature-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  border-radius: 8px;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+/* Heading styles */
+.temperature-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* Paragraph styles */
+.temperature-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Highlighting important terms */
+.temperature-container .highlight {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Adding some spacing between paragraphs */
+.temperature-container p + p {
+  margin-top: 20px;
+}
+
+/* Adding a subtle background color to the container */
+.temperature-container {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Adding a border to the container */
+.temperature-container {
+  border: 1px solid #ddd;
+}
+
+/* Styling for small sections within the page */
+.temperature-container small {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Adding some padding to the overall container */
+.temperature-container {
+  padding: 25px;
+}
+/* Container for the page */
+.windabout-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Heading styles */
+.windabout-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styles */
+.windabout-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Highlighting important terms */
+.windabout-container .highlight {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Adding some spacing between paragraphs */
+.windabout-container p + p {
+  margin-top: 20px;
+}
+
+/* Adding a subtle background color to the container */
+.windabout-container {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Adding a border to the container */
+.windabout-container {
+  border: 1px solid #ddd;
+}
+
+/* Styling for small sections within the page */
+.windabout-container small {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Adding some padding to the overall container */
+.windabout-container {
+  padding: 25px;
+}
+/* Container for the page */
+.humidityabout-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Heading styles */
+.humidityabout-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styles */
+.humidityabout-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Highlighting important terms */
+.humidityabout-container .highlight {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Adding some spacing between paragraphs */
+.humidityabout-container p + p {
+  margin-top: 20px;
+}
+
+/* Adding a subtle background color to the container */
+.humidityabout-container {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Adding a border to the container */
+.humidityabout-container {
+  border: 1px solid #ddd;
+}
+
+/* Styling for small sections within the page */
+.humidityabout-container small {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Adding some padding to the overall container */
+.humidityabout-container {
+  padding: 25px;
+}
+/* Container for the page */
+.pressure-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Heading styles */
+.pressure-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styles */
+.pressure-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Highlighting important terms */
+.pressure-container .highlight {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Adding some spacing between paragraphs */
+.pressure-container p + p {
+  margin-top: 20px;
+}
+
+/* Adding a subtle background color to the container */
+.pressure-container {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Adding a border to the container */
+.pressure-container {
+  border: 1px solid #ddd;
+}
+
+/* Styling for small sections within the page */
+.pressure-container small {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Adding some padding to the overall container */
+.pressure-container {
+  padding: 25px;
+}
+/* Container for the page */
+.cloud-coverage-container {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Heading styles */
+.cloud-coverage-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styles */
+.cloud-coverage-container p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 15px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Highlighting important terms */
+.cloud-coverage-container .highlight {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+/* Adding some spacing between paragraphs */
+.cloud-coverage-container p + p {
+  margin-top: 20px;
+}
+
+/* Adding a subtle background color to the container */
+.cloud-coverage-container {
+  background-color: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Adding a border to the container */
+.cloud-coverage-container {
+  border: 1px solid #ddd;
+}
+
+/* Styling for small sections within the page */
+.cloud-coverage-container small {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* Adding some padding to the overall container */
+.cloud-coverage-container {
+  padding: 25px;
+}
