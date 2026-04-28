@@ -9,6 +9,8 @@ const os = require("os");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+//mongoose.connect(dbURI)
+
 
 const app = express();
 const PORT = 5000;
@@ -27,7 +29,7 @@ if (!dbURI) {
 mongoose.set("strictQuery", true);
 
 mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
@@ -208,7 +210,7 @@ app.get("/weather-log", async (req, res) => {
   }
 });
 const User = require("./model/userSchema.cjs");
-app.post("/register", async (req, res) => {
+app.post("/singup", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
 
   if (!name || !email || !phone || !work || !password || !cpassword) {
@@ -225,13 +227,14 @@ app.post("/register", async (req, res) => {
       return res.status(422).json({ error: "User already exists" });
     }
 
+ 
 
     const user = new User({
       name,
       email,
       phone,
       work,
-      password: hashedPassword, // Only hash password, not cpassword
+      password,
     });
 
     await user.save();
@@ -288,9 +291,7 @@ app.post("/api/reset-password", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Hash the new password
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    user.password = hashedPassword;
+    user.password = password;
 
     await user.save();
     res.status(200).json({ message: "Password successfully updated" });

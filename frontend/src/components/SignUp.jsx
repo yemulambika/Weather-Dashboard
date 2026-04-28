@@ -30,7 +30,7 @@ const SignUp = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/register", {
+      const res = await fetch("http://localhost:5000/singup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,12 @@ const SignUp = () => {
         }),
       });
 
-      const data = await res.json();
+      let data;
+try {
+  data = await res.json();
+} catch {
+  data = { error: "Invalid server response" };
+}
 
       if (res.status === 422 || !data) {
         window.alert(data.error || "Invalid Registration");
