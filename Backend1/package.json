@@ -14,9 +14,10 @@
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.6.1",
     "express": "^4.21.2",
     "mongoose": "^8.9.7",
+    "nodemon": "^3.1.14",
     "xlsx": "^0.18.5"
   }
 }

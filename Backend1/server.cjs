@@ -207,19 +207,7 @@ app.get("/weather-log", async (req, res) => {
     res.status(500).json({ error: "Internal server error." });
   }
 });
-
-const User = mongoose.model(
-  "User",
-  new mongoose.Schema({
-    name: String,
-    email: String,
-    phone: String,
-    work: String,
-    password: String,
-    cpassword: String,
-  }),
-);
-
+const User = require("./model/userSchema.cjs");
 app.post("/register", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
 
@@ -237,7 +225,6 @@ app.post("/register", async (req, res) => {
       return res.status(422).json({ error: "User already exists" });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = new User({
       name,

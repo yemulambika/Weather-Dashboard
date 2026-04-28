@@ -24,33 +24,33 @@ router.get("/about", (req, res) => {
   }
 });
 
-router.post("/register", async (req, res) => {
-  const { name, email, phone, work, password, cpassword } = req.body;
+// router.post("/register", async (req, res) => {
+//   const { name, email, phone, work, password, cpassword } = req.body;
 
-  if (!name || !email || !phone || !work || !password || !cpassword) {
-    return res.status(422).json({ error: "Please fill all the fields" });
-  }
+//   if (!name || !email || !phone || !work || !password || !cpassword) {
+//     return res.status(422).json({ error: "Please fill all the fields" });
+//   }
 
-  try {
-    const userExist = await User.findOne({ email });
+//   try {
+//     const userExist = await User.findOne({ email });
 
-    if (userExist) {
-      return res.status(422).json({ error: "Email already exists" });
-    }
+//     if (userExist) {
+//       return res.status(422).json({ error: "Email already exists" });
+//     }
 
-    if (password !== cpassword) {
-      return res.status(422).json({ error: "Passwords do not match" });
-    }
+//     if (password !== cpassword) {
+//       return res.status(422).json({ error: "Passwords do not match" });
+//     }
 
-    const user = new User({ name, email, phone, work, password });
+//     const user = new User({ name, email, phone, work, password });
 
-    await user.save(); // Save user to MongoDB Atlas
-    res.status(201).json({ message: "User registered successfully" });
-  } catch (err) {
-    console.error("Error in registration:", err);
-    res.status(500).json({ error: "Failed to register" });
-  }
-});
+//     await user.save(); // Save user to MongoDB Atlas
+//     res.status(201).json({ message: "User registered successfully" });
+//   } catch (err) {
+//     console.error("Error in registration:", err);
+//     res.status(500).json({ error: "Failed to register" });
+//   }
+// });
 
 router.post("/signin", async (req, res) => {
   try {
