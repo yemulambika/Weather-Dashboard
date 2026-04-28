@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;;
 // Middleware
 
 app.use(express.urlencoded({ extended: true }));
-const cors = require("cors");
+
 
 app.use(cors({
   origin: "https://weather-dashboard-frontend-1.onrender.com",
