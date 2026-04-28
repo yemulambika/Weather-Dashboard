@@ -48,7 +48,11 @@ const COORDINATES = [
   { latitude: 23.560601, longitude: 68.654017 },
 ];
 
-const DOWNLOADS_DIR = path.join(os.homedir(), "Downloads");
+const DOWNLOADS_DIR = path.join(__dirname, "data");
+
+if (!fs.existsSync(DOWNLOADS_DIR)) {
+  fs.mkdirSync(DOWNLOADS_DIR);
+}
 let weatherFilePath = generateFileName();
 let lastFileCreationTime = new Date(0);
 
