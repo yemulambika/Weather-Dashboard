@@ -17,7 +17,13 @@ const PORT = process.env.PORT || 5000;;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors({
+  origin: "https://weather-dashboard-frontend-1.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 // MongoDB Connection
 const dbURI = process.env.DATABASE;
@@ -214,7 +220,7 @@ app.get("/weather-log", async (req, res) => {
   }
 });
 const User = require("./model/userSchema.cjs");
-app.post("/singup", async (req, res) => {
+app.post("/signup", async (req, res) => {
   const { name, email, phone, work, password, cpassword } = req.body;
 
   if (!name || !email || !phone || !work || !password || !cpassword) {
@@ -309,5 +315,5 @@ app.post("/api/reset-password", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
   fetchWeatherData();
-  setInterval(fetchWeatherData, 2 * 60 * 1000);
+  setInterval(fetchWeatherData,  5 * 60 * 1000);
 });
